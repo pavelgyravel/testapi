@@ -6,11 +6,19 @@ gem 'hanami-model', '~> 1.3'
 
 gem 'pg'
 
+gem 'trailblazer-operation'
+gem 'fast_jsonapi'
+
+gem 'faker'
+
+
 group :development do
   # Code reloading
   # See: https://guides.hanamirb.org/projects/code-reloading
   gem 'shotgun', platforms: :ruby
   gem 'hanami-webconsole'
+  gem 'awesome_print'
+  gem 'thin'
 end
 
 group :test, :development do

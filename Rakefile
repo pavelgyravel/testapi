@@ -1,5 +1,6 @@
 require 'rake'
 require 'hanami/rake_tasks'
+require 'lib/tasks'
 
 begin
   require 'rspec/core/rake_task'
