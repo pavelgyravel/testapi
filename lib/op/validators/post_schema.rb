@@ -1,10 +1,5 @@
 module Validators
-  PostSchema = Dry::Validation.Schema do
-    configure do
-      predicates(CustomValidationPredicates)
-      config.messages_file = 'config/locale/errors.yml' 
-    end
-
+  PostSchema = Dry::Validation.Schema(BaseSchema) do
     required(:title).filled(:str?)
     required(:content).filled(:str?)
     required(:author_ip).filled(:ip?)

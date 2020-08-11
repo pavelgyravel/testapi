@@ -1,28 +1,25 @@
 module Api
   module Controllers
-    module Posts
+    module Rates
       class New
         include Api::Action
 
         def call(params)
           op_params = {
-            title: params[:title],
-            content: params[:content],
-            author_ip: params[:author_ip],
-            login: params[:login]
+            post_id: params[:post_id],
+            rate: params[:rate]
           }
 
-          signal, (ctx, _) = Op::Posts::New.(params: op_params)
+          signal, (ctx, _) = Op::Rates::New.(params: op_params)
           
           self.format =  :json
+          
           if signal.to_h[:semantic] == :success
-            self.body = ctx[:post].to_h.to_json   
+            self.body = ctx[:model].to_h.to_json   
           else 
             self.body = ctx[:errors].to_json 
             self.status = 422
           end
-          
-          
         end
       end
     end

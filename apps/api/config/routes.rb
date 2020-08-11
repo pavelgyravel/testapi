@@ -4,4 +4,5 @@
 # Example:
 # get '/hello', to: ->(env) { [200, {}, ['Hello from Hanami!']] }
 get '/posts/:id', to: 'posts#show'
-post '/posts', to: 'posts#new'
+post '/posts/new', to: 'posts#new'
+post '/rates/new', to: 'rates#new'

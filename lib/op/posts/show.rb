@@ -4,7 +4,7 @@ module Op::Posts
     step :model, Output(Trailblazer::Activity::Left, :failure) => End(:invalid)
     
     def validate(ctx, params:, **)
-      sch = Dry::Validation.Schema do
+      sch = Dry::Validation.Schema(BaseSchema) do
         required(:id).filled(:int?, gt?: 0)
       end
       validation = sch.call(params)
@@ -14,12 +14,8 @@ module Op::Posts
     
     def model(ctx, params:, **)
       ctx[:model] = PostRepository.new.find(params[:id])
-      if !ctx[:model] 
-        ctx[:errors] = {not_found: 'Post not found'}
-        false
-      else 
-        true
-      end
+      ctx[:errors] = {not_found: 'Post not found'} if !ctx[:model] 
+      ctx[:model] ? Trailblazer::Activity::Right : Trailblazer::Activity::Left
     end
   end
 end
