@@ -4,7 +4,7 @@ require 'uri'
 require 'json'
 require 'rake'
 require 'rake-progressbar'
-require ''
+
 
 namespace :db do
   desc 'Creates initiad data'

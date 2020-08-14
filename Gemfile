@@ -19,6 +19,7 @@ group :development do
   gem 'hanami-webconsole'
   gem 'awesome_print'
   gem 'thin'
+  gem "capistrano", "~> 3.14", require: false
 end
 
 group :test, :development do
