@@ -8,13 +8,15 @@ require 'rake-progressbar'
 
 namespace :db do
   desc 'Creates initiad data'
-  task :seed do
+  task :seed [:domain] do
     # 200k Done in 1777.9301319997758seconds
+
+    domain = args[:domain] || 'http://locahost:2300'
 
     ips_count = 50
     authors_count = 100
-    posts_count = 1000
-    rates_count = 200000
+    posts_count = 200000
+    rates_count = 1000
 
     puts "Dummy data creating started.."
     bar = RakeProgressbar.new( rates_count + posts_count)
@@ -23,7 +25,7 @@ namespace :db do
     authors = Array.new(authors_count).map{ "#{Faker::Name.first_name}_#{Faker::Name.last_name}".downcase }
 
     posts_ids = []
-    uri = URI.parse("http://localhost:2300/api/posts/new")
+    uri = URI.parse("#{domain}/api/posts/new")
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/json"
     req_options = {
@@ -56,7 +58,7 @@ namespace :db do
     posts_to_rate.each do |post_id|
       rand(20).times do
         
-        uri = URI.parse("http://localhost:2300/api/rates/new")
+        uri = URI.parse("#{domain}/api/rates/new")
         request = Net::HTTP::Post.new(uri)
         request.content_type = "application/json"
         request.body = JSON.dump({
