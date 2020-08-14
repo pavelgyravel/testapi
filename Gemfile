@@ -8,8 +8,8 @@ gem 'pg'
 
 gem 'trailblazer-operation'
 gem 'fast_jsonapi'
-
 gem 'faker'
+gem 'dotenv', '~> 2.4'
 
 gem 'rake-progressbar'
 group :development do

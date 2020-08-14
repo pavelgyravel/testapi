@@ -249,3 +249,195 @@ and the repository exists.
   INFO [14f1eca0] Running /usr/bin/env echo "translation missing: en.capistrano.revision_log_message" >> /var/www/testapi/revisions.log as pavlo@64.225.75.221
  DEBUG [14f1eca0] Command: cd /var/www/testapi/releases && /usr/bin/env echo "translation missing: en.capistrano.revision_log_message" >> /var/www/testapi/revisions.log
   INFO [14f1eca0] Finished in 0.185 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2020-08-14 10:09:59 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [d663feb1] Running /usr/bin/env mkdir -p /tmp as pavlo@64.225.75.221
+ DEBUG [d663feb1] Command: /usr/bin/env mkdir -p /tmp
+  INFO [d663feb1] Finished in 5.303 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-testapi-production-pavel.sh 0.0%
+  INFO Uploading /tmp/git-ssh-testapi-production-pavel.sh 100.0%
+  INFO [1faab4fc] Running /usr/bin/env chmod 700 /tmp/git-ssh-testapi-production-pavel.sh as pavlo@64.225.75.221
+ DEBUG [1faab4fc] Command: /usr/bin/env chmod 700 /tmp/git-ssh-testapi-production-pavel.sh
+  INFO [1faab4fc] Finished in 0.189 seconds with exit status 0 (successful).
+  INFO [0da56fc2] Running /usr/bin/env git ls-remote git@github.com:pavelgyravel/testapi.git HEAD as pavlo@64.225.75.221
+ DEBUG [0da56fc2] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-testapi-production-pavel.sh" ; /usr/bin/env git ls-remote git@github.com:pavelgyravel/testapi.git HEAD )
+ DEBUG [0da56fc2] 	3edc91a6f082ab3c14c7be7d2dad40dfc222815e	HEAD
+  INFO [0da56fc2] Finished in 1.641 seconds with exit status 0 (successful).
+  INFO [feaa3a5d] Running /usr/bin/env mkdir -p /var/www/testapi/shared /var/www/testapi/releases as pavlo@64.225.75.221
+ DEBUG [feaa3a5d] Command: /usr/bin/env mkdir -p /var/www/testapi/shared /var/www/testapi/releases
+  INFO [feaa3a5d] Finished in 0.185 seconds with exit status 0 (successful).
+  INFO [8f8cfc51] Running /usr/bin/env mkdir -p /var/www/testapi/shared/config as pavlo@64.225.75.221
+ DEBUG [8f8cfc51] Command: /usr/bin/env mkdir -p /var/www/testapi/shared/config
+  INFO [8f8cfc51] Finished in 0.182 seconds with exit status 0 (successful).
+ DEBUG [e13add63] Running [ -f /var/www/testapi/shared/config/.env.production ] as pavlo@64.225.75.221
+ DEBUG [e13add63] Command: [ -f /var/www/testapi/shared/config/.env.production ]
+ DEBUG [e13add63] Finished in 0.187 seconds with exit status 0 (successful).
+ DEBUG [39c6b439] Running [ -f /var/www/testapi/current/REVISION ] as pavlo@64.225.75.221
+ DEBUG [39c6b439] Command: [ -f /var/www/testapi/current/REVISION ]
+ DEBUG [39c6b439] Finished in 0.188 seconds with exit status 0 (successful).
+ DEBUG [31071483] Running /usr/bin/env cat /var/www/testapi/current/REVISION 2>/dev/null as pavlo@64.225.75.221
+ DEBUG [31071483] Command: /usr/bin/env cat /var/www/testapi/current/REVISION 2>/dev/null
+ DEBUG [31071483] 	31b59cf2b8aa4e8bec5ad99aab386b4305ee2eab
+ DEBUG [31071483] Finished in 0.183 seconds with exit status 0 (successful).
+ DEBUG [913d9419] Running [ -f /var/www/testapi/repo/HEAD ] as pavlo@64.225.75.221
+ DEBUG [913d9419] Command: [ -f /var/www/testapi/repo/HEAD ]
+ DEBUG [913d9419] Finished in 0.183 seconds with exit status 0 (successful).
+  INFO translation missing: en.capistrano.mirror_exists
+ DEBUG [2dcff82b] Running if test ! -d /var/www/testapi/repo; then echo "Directory does not exist '/var/www/testapi/repo'" 1>&2; false; fi as pavlo@64.225.75.221
+ DEBUG [2dcff82b] Command: if test ! -d /var/www/testapi/repo; then echo "Directory does not exist '/var/www/testapi/repo'" 1>&2; false; fi
+ DEBUG [2dcff82b] Finished in 0.182 seconds with exit status 0 (successful).
+  INFO [f74f0a8f] Running /usr/bin/env git remote set-url origin git@github.com:pavelgyravel/testapi.git as pavlo@64.225.75.221
+ DEBUG [f74f0a8f] Command: cd /var/www/testapi/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-testapi-production-pavel.sh" ; /usr/bin/env git remote set-url origin git@github.com:pavelgyravel/testapi.git )
+  INFO [f74f0a8f] Finished in 0.188 seconds with exit status 0 (successful).
+  INFO [d2bffa3f] Running /usr/bin/env git remote update --prune as pavlo@64.225.75.221
+ DEBUG [d2bffa3f] Command: cd /var/www/testapi/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-testapi-production-pavel.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [d2bffa3f] 	Fetching origin
+ DEBUG [d2bffa3f] 	From github.com:pavelgyravel/testapi
+   31b59cf..3edc91a  master     -> master
+  INFO [d2bffa3f] Finished in 1.346 seconds with exit status 0 (successful).
+ DEBUG [8e3d75ea] Running if test ! -d /var/www/testapi/repo; then echo "Directory does not exist '/var/www/testapi/repo'" 1>&2; false; fi as pavlo@64.225.75.221
+ DEBUG [8e3d75ea] Command: if test ! -d /var/www/testapi/repo; then echo "Directory does not exist '/var/www/testapi/repo'" 1>&2; false; fi
+ DEBUG [8e3d75ea] Finished in 0.229 seconds with exit status 0 (successful).
+  INFO [8e951a86] Running /usr/bin/env mkdir -p /var/www/testapi/releases/20200814071007 as pavlo@64.225.75.221
+ DEBUG [8e951a86] Command: cd /var/www/testapi/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-testapi-production-pavel.sh" ; /usr/bin/env mkdir -p /var/www/testapi/releases/20200814071007 )
+  INFO [8e951a86] Finished in 0.225 seconds with exit status 0 (successful).
+  INFO [99e62746] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/testapi/releases/20200814071007 as pavlo@64.225.75.221
+ DEBUG [99e62746] Command: cd /var/www/testapi/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-testapi-production-pavel.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/testapi/releases/20200814071007 )
+  INFO [99e62746] Finished in 0.280 seconds with exit status 0 (successful).
+ DEBUG [3af5aaf5] Running if test ! -d /var/www/testapi/repo; then echo "Directory does not exist '/var/www/testapi/repo'" 1>&2; false; fi as pavlo@64.225.75.221
+ DEBUG [3af5aaf5] Command: if test ! -d /var/www/testapi/repo; then echo "Directory does not exist '/var/www/testapi/repo'" 1>&2; false; fi
+ DEBUG [3af5aaf5] Finished in 0.281 seconds with exit status 0 (successful).
+ DEBUG [8d4f4e37] Running /usr/bin/env git rev-list --max-count=1 master as pavlo@64.225.75.221
+ DEBUG [8d4f4e37] Command: cd /var/www/testapi/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-testapi-production-pavel.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [8d4f4e37] 	3edc91a6f082ab3c14c7be7d2dad40dfc222815e
+ DEBUG [8d4f4e37] Finished in 0.244 seconds with exit status 0 (successful).
+ DEBUG [5eb13daa] Running if test ! -d /var/www/testapi/releases/20200814071007; then echo "Directory does not exist '/var/www/testapi/releases/20200814071007'" 1>&2; false; fi as pavlo@64.225.75.221
+ DEBUG [5eb13daa] Command: if test ! -d /var/www/testapi/releases/20200814071007; then echo "Directory does not exist '/var/www/testapi/releases/20200814071007'" 1>&2; false; fi
+ DEBUG [5eb13daa] Finished in 0.188 seconds with exit status 0 (successful).
+  INFO [dd2d18d9] Running /usr/bin/env echo "3edc91a6f082ab3c14c7be7d2dad40dfc222815e" > REVISION as pavlo@64.225.75.221
+ DEBUG [dd2d18d9] Command: cd /var/www/testapi/releases/20200814071007 && /usr/bin/env echo "3edc91a6f082ab3c14c7be7d2dad40dfc222815e" > REVISION
+  INFO [dd2d18d9] Finished in 0.192 seconds with exit status 0 (successful).
+  INFO [316c9ed4] Running /usr/bin/env mkdir -p /var/www/testapi/releases/20200814071007/config as pavlo@64.225.75.221
+ DEBUG [316c9ed4] Command: /usr/bin/env mkdir -p /var/www/testapi/releases/20200814071007/config
+  INFO [316c9ed4] Finished in 0.191 seconds with exit status 0 (successful).
+ DEBUG [75ea2996] Running [ -L /var/www/testapi/releases/20200814071007/config/.env.production ] as pavlo@64.225.75.221
+ DEBUG [75ea2996] Command: [ -L /var/www/testapi/releases/20200814071007/config/.env.production ]
+ DEBUG [75ea2996] Finished in 0.191 seconds with exit status 1 (failed).
+ DEBUG [b1c2d6a9] Running [ -f /var/www/testapi/releases/20200814071007/config/.env.production ] as pavlo@64.225.75.221
+ DEBUG [b1c2d6a9] Command: [ -f /var/www/testapi/releases/20200814071007/config/.env.production ]
+ DEBUG [b1c2d6a9] Finished in 0.186 seconds with exit status 1 (failed).
+  INFO [6a287cfc] Running /usr/bin/env ln -s /var/www/testapi/shared/config/.env.production /var/www/testapi/releases/20200814071007/config/.env.production as pavlo@64.225.75.221
+ DEBUG [6a287cfc] Command: /usr/bin/env ln -s /var/www/testapi/shared/config/.env.production /var/www/testapi/releases/20200814071007/config/.env.production
+  INFO [6a287cfc] Finished in 0.188 seconds with exit status 0 (successful).
+  INFO [3e056861] Running /usr/bin/env ln -s /var/www/testapi/releases/20200814071007 /var/www/testapi/releases/current as pavlo@64.225.75.221
+ DEBUG [3e056861] Command: /usr/bin/env ln -s /var/www/testapi/releases/20200814071007 /var/www/testapi/releases/current
+  INFO [3e056861] Finished in 0.213 seconds with exit status 0 (successful).
+  INFO [81254386] Running /usr/bin/env mv /var/www/testapi/releases/current /var/www/testapi as pavlo@64.225.75.221
+ DEBUG [81254386] Command: /usr/bin/env mv /var/www/testapi/releases/current /var/www/testapi
+  INFO [81254386] Finished in 0.198 seconds with exit status 0 (successful).
+ DEBUG [b420fb00] Running /usr/bin/env ls -x /var/www/testapi/releases as pavlo@64.225.75.221
+ DEBUG [b420fb00] Command: /usr/bin/env ls -x /var/www/testapi/releases
+ DEBUG [b420fb00] 	20200814065250	20200814070645	20200814071007
+ DEBUG [b420fb00] Finished in 0.187 seconds with exit status 0 (successful).
+ DEBUG [b2a1427a] Running if test ! -d /var/www/testapi/releases; then echo "Directory does not exist '/var/www/testapi/releases'" 1>&2; false; fi as pavlo@64.225.75.221
+ DEBUG [b2a1427a] Command: if test ! -d /var/www/testapi/releases; then echo "Directory does not exist '/var/www/testapi/releases'" 1>&2; false; fi
+ DEBUG [b2a1427a] Finished in 0.214 seconds with exit status 0 (successful).
+  INFO [5db4585f] Running /usr/bin/env echo "translation missing: en.capistrano.revision_log_message" >> /var/www/testapi/revisions.log as pavlo@64.225.75.221
+ DEBUG [5db4585f] Command: cd /var/www/testapi/releases && /usr/bin/env echo "translation missing: en.capistrano.revision_log_message" >> /var/www/testapi/revisions.log
+  INFO [5db4585f] Finished in 0.189 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2020-08-14 10:14:23 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [bb48183d] Running /usr/bin/env mkdir -p /tmp as pavlo@64.225.75.221
+ DEBUG [bb48183d] Command: /usr/bin/env mkdir -p /tmp
+  INFO [bb48183d] Finished in 4.414 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-testapi-production-pavel.sh 0.0%
+  INFO Uploading /tmp/git-ssh-testapi-production-pavel.sh 100.0%
+  INFO [f0c617f6] Running /usr/bin/env chmod 700 /tmp/git-ssh-testapi-production-pavel.sh as pavlo@64.225.75.221
+ DEBUG [f0c617f6] Command: /usr/bin/env chmod 700 /tmp/git-ssh-testapi-production-pavel.sh
+  INFO [f0c617f6] Finished in 0.182 seconds with exit status 0 (successful).
+  INFO [9dfc5952] Running /usr/bin/env git ls-remote git@github.com:pavelgyravel/testapi.git HEAD as pavlo@64.225.75.221
+ DEBUG [9dfc5952] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-testapi-production-pavel.sh" ; /usr/bin/env git ls-remote git@github.com:pavelgyravel/testapi.git HEAD )
+ DEBUG [9dfc5952] 	3edc91a6f082ab3c14c7be7d2dad40dfc222815e	HEAD
+  INFO [9dfc5952] Finished in 1.247 seconds with exit status 0 (successful).
+  INFO [24fc4633] Running /usr/bin/env mkdir -p /var/www/testapi/shared /var/www/testapi/releases as pavlo@64.225.75.221
+ DEBUG [24fc4633] Command: /usr/bin/env mkdir -p /var/www/testapi/shared /var/www/testapi/releases
+  INFO [24fc4633] Finished in 0.184 seconds with exit status 0 (successful).
+  INFO [64a61a3d] Running /usr/bin/env mkdir -p /var/www/testapi/shared/config as pavlo@64.225.75.221
+ DEBUG [64a61a3d] Command: /usr/bin/env mkdir -p /var/www/testapi/shared/config
+  INFO [64a61a3d] Finished in 0.181 seconds with exit status 0 (successful).
+ DEBUG [a12f2b78] Running [ -f /var/www/testapi/shared/config/.env.production ] as pavlo@64.225.75.221
+ DEBUG [a12f2b78] Command: [ -f /var/www/testapi/shared/config/.env.production ]
+ DEBUG [a12f2b78] Finished in 0.182 seconds with exit status 0 (successful).
+ DEBUG [1ddefff7] Running [ -f /var/www/testapi/current/REVISION ] as pavlo@64.225.75.221
+ DEBUG [1ddefff7] Command: [ -f /var/www/testapi/current/REVISION ]
+ DEBUG [1ddefff7] Finished in 0.188 seconds with exit status 0 (successful).
+ DEBUG [65a58ae9] Running /usr/bin/env cat /var/www/testapi/current/REVISION 2>/dev/null as pavlo@64.225.75.221
+ DEBUG [65a58ae9] Command: /usr/bin/env cat /var/www/testapi/current/REVISION 2>/dev/null
+ DEBUG [65a58ae9] 	3edc91a6f082ab3c14c7be7d2dad40dfc222815e
+ DEBUG [65a58ae9] Finished in 0.183 seconds with exit status 0 (successful).
+ DEBUG [6df6ce6a] Running [ -f /var/www/testapi/repo/HEAD ] as pavlo@64.225.75.221
+ DEBUG [6df6ce6a] Command: [ -f /var/www/testapi/repo/HEAD ]
+ DEBUG [6df6ce6a] Finished in 0.180 seconds with exit status 0 (successful).
+  INFO translation missing: en.capistrano.mirror_exists
+ DEBUG [eefb8dcb] Running if test ! -d /var/www/testapi/repo; then echo "Directory does not exist '/var/www/testapi/repo'" 1>&2; false; fi as pavlo@64.225.75.221
+ DEBUG [eefb8dcb] Command: if test ! -d /var/www/testapi/repo; then echo "Directory does not exist '/var/www/testapi/repo'" 1>&2; false; fi
+ DEBUG [eefb8dcb] Finished in 0.179 seconds with exit status 0 (successful).
+  INFO [d79ab3e1] Running /usr/bin/env git remote set-url origin git@github.com:pavelgyravel/testapi.git as pavlo@64.225.75.221
+ DEBUG [d79ab3e1] Command: cd /var/www/testapi/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-testapi-production-pavel.sh" ; /usr/bin/env git remote set-url origin git@github.com:pavelgyravel/testapi.git )
+  INFO [d79ab3e1] Finished in 0.184 seconds with exit status 0 (successful).
+  INFO [0ecad87a] Running /usr/bin/env git remote update --prune as pavlo@64.225.75.221
+ DEBUG [0ecad87a] Command: cd /var/www/testapi/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-testapi-production-pavel.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [0ecad87a] 	Fetching origin
+  INFO [0ecad87a] Finished in 1.246 seconds with exit status 0 (successful).
+ DEBUG [6700103b] Running if test ! -d /var/www/testapi/repo; then echo "Directory does not exist '/var/www/testapi/repo'" 1>&2; false; fi as pavlo@64.225.75.221
+ DEBUG [6700103b] Command: if test ! -d /var/www/testapi/repo; then echo "Directory does not exist '/var/www/testapi/repo'" 1>&2; false; fi
+ DEBUG [6700103b] Finished in 0.181 seconds with exit status 0 (successful).
+  INFO [759a345d] Running /usr/bin/env mkdir -p /var/www/testapi/releases/20200814071430 as pavlo@64.225.75.221
+ DEBUG [759a345d] Command: cd /var/www/testapi/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-testapi-production-pavel.sh" ; /usr/bin/env mkdir -p /var/www/testapi/releases/20200814071430 )
+  INFO [759a345d] Finished in 0.187 seconds with exit status 0 (successful).
+  INFO [79929522] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/testapi/releases/20200814071430 as pavlo@64.225.75.221
+ DEBUG [79929522] Command: cd /var/www/testapi/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-testapi-production-pavel.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/testapi/releases/20200814071430 )
+  INFO [79929522] Finished in 0.196 seconds with exit status 0 (successful).
+ DEBUG [c7fab449] Running if test ! -d /var/www/testapi/repo; then echo "Directory does not exist '/var/www/testapi/repo'" 1>&2; false; fi as pavlo@64.225.75.221
+ DEBUG [c7fab449] Command: if test ! -d /var/www/testapi/repo; then echo "Directory does not exist '/var/www/testapi/repo'" 1>&2; false; fi
+ DEBUG [c7fab449] Finished in 0.184 seconds with exit status 0 (successful).
+ DEBUG [56b23abc] Running /usr/bin/env git rev-list --max-count=1 master as pavlo@64.225.75.221
+ DEBUG [56b23abc] Command: cd /var/www/testapi/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-testapi-production-pavel.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [56b23abc] 	3edc91a6f082ab3c14c7be7d2dad40dfc222815e
+ DEBUG [56b23abc] Finished in 0.185 seconds with exit status 0 (successful).
+ DEBUG [4976c819] Running if test ! -d /var/www/testapi/releases/20200814071430; then echo "Directory does not exist '/var/www/testapi/releases/20200814071430'" 1>&2; false; fi as pavlo@64.225.75.221
+ DEBUG [4976c819] Command: if test ! -d /var/www/testapi/releases/20200814071430; then echo "Directory does not exist '/var/www/testapi/releases/20200814071430'" 1>&2; false; fi
+ DEBUG [4976c819] Finished in 0.181 seconds with exit status 0 (successful).
+  INFO [5c5025d3] Running /usr/bin/env echo "3edc91a6f082ab3c14c7be7d2dad40dfc222815e" > REVISION as pavlo@64.225.75.221
+ DEBUG [5c5025d3] Command: cd /var/www/testapi/releases/20200814071430 && /usr/bin/env echo "3edc91a6f082ab3c14c7be7d2dad40dfc222815e" > REVISION
+  INFO [5c5025d3] Finished in 0.181 seconds with exit status 0 (successful).
+  INFO [5a9f2f43] Running /usr/bin/env mkdir -p /var/www/testapi/releases/20200814071430/config as pavlo@64.225.75.221
+ DEBUG [5a9f2f43] Command: /usr/bin/env mkdir -p /var/www/testapi/releases/20200814071430/config
+  INFO [5a9f2f43] Finished in 0.183 seconds with exit status 0 (successful).
+ DEBUG [698af1ad] Running [ -L /var/www/testapi/releases/20200814071430/config/.env.production ] as pavlo@64.225.75.221
+ DEBUG [698af1ad] Command: [ -L /var/www/testapi/releases/20200814071430/config/.env.production ]
+ DEBUG [698af1ad] Finished in 0.181 seconds with exit status 1 (failed).
+ DEBUG [1219f19e] Running [ -f /var/www/testapi/releases/20200814071430/config/.env.production ] as pavlo@64.225.75.221
+ DEBUG [1219f19e] Command: [ -f /var/www/testapi/releases/20200814071430/config/.env.production ]
+ DEBUG [1219f19e] Finished in 0.180 seconds with exit status 1 (failed).
+  INFO [2377e119] Running /usr/bin/env ln -s /var/www/testapi/shared/config/.env.production /var/www/testapi/releases/20200814071430/config/.env.production as pavlo@64.225.75.221
+ DEBUG [2377e119] Command: /usr/bin/env ln -s /var/www/testapi/shared/config/.env.production /var/www/testapi/releases/20200814071430/config/.env.production
+  INFO [2377e119] Finished in 0.185 seconds with exit status 0 (successful).
+  INFO [bf6acaf1] Running /usr/bin/env ln -s /var/www/testapi/releases/20200814071430 /var/www/testapi/releases/current as pavlo@64.225.75.221
+ DEBUG [bf6acaf1] Command: /usr/bin/env ln -s /var/www/testapi/releases/20200814071430 /var/www/testapi/releases/current
+  INFO [bf6acaf1] Finished in 0.182 seconds with exit status 0 (successful).
+  INFO [955eb625] Running /usr/bin/env mv /var/www/testapi/releases/current /var/www/testapi as pavlo@64.225.75.221
+ DEBUG [955eb625] Command: /usr/bin/env mv /var/www/testapi/releases/current /var/www/testapi
+  INFO [955eb625] Finished in 0.186 seconds with exit status 0 (successful).
+ DEBUG [00cb70b6] Running /usr/bin/env ls -x /var/www/testapi/releases as pavlo@64.225.75.221
+ DEBUG [00cb70b6] Command: /usr/bin/env ls -x /var/www/testapi/releases
+ DEBUG [00cb70b6] 	20200814065250	20200814070645	20200814071007	20200814071430
+ DEBUG [00cb70b6] Finished in 0.181 seconds with exit status 0 (successful).
+ DEBUG [daf63963] Running if test ! -d /var/www/testapi/releases; then echo "Directory does not exist '/var/www/testapi/releases'" 1>&2; false; fi as pavlo@64.225.75.221
+ DEBUG [daf63963] Command: if test ! -d /var/www/testapi/releases; then echo "Directory does not exist '/var/www/testapi/releases'" 1>&2; false; fi
+ DEBUG [daf63963] Finished in 0.182 seconds with exit status 0 (successful).
+  INFO [c60b8ab0] Running /usr/bin/env echo "translation missing: en.capistrano.revision_log_message" >> /var/www/testapi/revisions.log as pavlo@64.225.75.221
+ DEBUG [c60b8ab0] Command: cd /var/www/testapi/releases && /usr/bin/env echo "translation missing: en.capistrano.revision_log_message" >> /var/www/testapi/revisions.log
+  INFO [c60b8ab0] Finished in 0.185 seconds with exit status 0 (successful).
