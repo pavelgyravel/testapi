@@ -8,7 +8,7 @@ require 'rake-progressbar'
 
 namespace :db do
   desc 'Creates initiad data'
-  task :seed [:domain] do
+  task :seed, [:domain] do
     # 200k Done in 1777.9301319997758seconds
 
     domain = args[:domain] || 'http://locahost:2300'
