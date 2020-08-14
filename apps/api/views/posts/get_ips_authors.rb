@@ -1,7 +1,7 @@
 module Api
   module Views
     module Posts
-      class Show
+      class GetIpsAuthors
         include Api::View
       end
     end

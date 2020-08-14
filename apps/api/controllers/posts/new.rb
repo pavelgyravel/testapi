@@ -16,7 +16,7 @@ module Api
           
           self.format =  :json
           if signal.to_h[:semantic] == :success
-            self.body = ctx[:post].to_h.to_json   
+            self.body = ctx[:post].to_json   
           else 
             self.body = ctx[:errors].to_json 
             self.status = 422

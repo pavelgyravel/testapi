@@ -7,9 +7,8 @@ module Api
         def call(params)
           op_params = {
             post_id: params[:post_id],
-            rate: params[:rate]
+            rate: params[:rate].to_i
           }
-
           signal, (ctx, _) = Op::Rates::New.(params: op_params)
           
           self.format =  :json

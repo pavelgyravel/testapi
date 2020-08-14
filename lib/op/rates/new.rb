@@ -5,10 +5,7 @@ module Op::Rates
     step :create_rate
     
     def validate(ctx, params:, **)
-      sch = Dry::Validation.Schema do
-        required(:rate).filled(:int?, included_in?: [1,2,3,4,5])
-        required(:post_id).filled(:int?, gt?: 0)
-      end
+      sch = Validators::RateSchema
       validation = sch.call(params)
       ctx[:errors] = validation.errors
       validation.success? 

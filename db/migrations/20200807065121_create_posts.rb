@@ -8,7 +8,6 @@ Hanami::Model.migration do
       column :author_ip, :inet, null: false
       
       column :rate, Float, null: false, default: 0
-      column :count_rate_need, FalseClass, null: false, default: false
 
       foreign_key :user_id, :users, null: false
 

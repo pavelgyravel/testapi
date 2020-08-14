@@ -148,6 +148,7 @@ GEM
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rake (13.0.1)
+    rake-progressbar (0.0.5)
     regexp_parser (1.7.1)
     representable (3.0.4)
       declarative (< 0.1.0)
@@ -235,6 +236,7 @@ DEPENDENCIES
   hanami-webconsole
   pg
   rake
+  rake-progressbar
   rspec
   shotgun
   thin

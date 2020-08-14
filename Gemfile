@@ -11,7 +11,7 @@ gem 'fast_jsonapi'
 
 gem 'faker'
 
-
+gem 'rake-progressbar'
 group :development do
   # Code reloading
   # See: https://guides.hanamirb.org/projects/code-reloading
