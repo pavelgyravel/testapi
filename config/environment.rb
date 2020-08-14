@@ -22,7 +22,7 @@ Hanami.configure do
     #    adapter :sql, 'postgresql://localhost/api_development'
     #    adapter :sql, 'mysql://localhost/api_development'
     #
-    adapter :sql, ENV.fetch('DATABASE_URL')
+    adapter :sql, ENV.fetch('DATABASE_URL', "postgresql://postgres@localhost/api_#{ENV['HANAMI_ENV']}")
 
     ##
     # Migrations
