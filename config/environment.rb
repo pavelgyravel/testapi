@@ -4,6 +4,8 @@ require 'hanami/model'
 require_relative '../lib/api'
 # require_relative '../apps/web/application'
 require_relative '../apps/api/application'
+require 'dotenv'
+Dotenv.load(".env.#{ENV['HANAMI_ENV']}")
 
 Hanami.configure do
   mount Api::Application, at: '/api'
