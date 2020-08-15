@@ -13,7 +13,7 @@ module Op::Posts
     end
     
     def find_rates(ctx, params:, **)
-      ctx[:posts] = PostRepository.new.get_top(params[:count])
+      ctx[:model] = PostRepository.new.get_top(params[:count])
     end
 
   end

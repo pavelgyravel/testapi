@@ -6,8 +6,7 @@ module Api
 
         def call(params)
           signal, (ctx, _) = Op::Posts::Show.(params: {id: params[:id].to_i})
-          self.format =  :json
-          self.body = signal.to_h[:semantic] == :success ? ctx[:model].to_h.to_json : ctx[:errors].to_json 
+          present(signal, ctx, PostStruct)
         end
       end
     end

@@ -20,10 +20,10 @@ group :development do
   gem 'awesome_print'
   gem 'thin'
   gem "capistrano", "~> 3.14", require: false
-  gem "capistrano-hanami"
-  gem "capistrano-rvm"
-	gem "capistrano-bundler"	
-	gem "capistrano-passenger"
+  gem "capistrano-hanami", require: false
+  gem "capistrano-rvm", require: false
+	gem "capistrano-bundler"	, require: false
+	gem "capistrano-passenger", require: false
 	
 end
 

@@ -8,12 +8,9 @@ module Api
           op_params = {}
           op_params[:count] = params[:count].to_i if params[:count]
           signal, (ctx, _) = Op::Posts::List.(params: op_params)
-          if signal.to_h[:semantic] == :success
-            self.body = ctx[:posts].to_json   
-          else 
-            self.body = ctx[:errors].to_json 
-            self.status = 422
-          end
+
+          present(signal, ctx, PostStruct)
+
         end
       end
     end

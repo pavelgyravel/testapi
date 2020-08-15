@@ -9,16 +9,11 @@ module Api
             post_id: params[:post_id],
             rate: params[:rate].to_i
           }
+          
           signal, (ctx, _) = Op::Rates::New.(params: op_params)
           
-          self.format =  :json
+          present(signal, ctx, PostStruct)
           
-          if signal.to_h[:semantic] == :success
-            self.body = ctx[:model].to_h.to_json   
-          else 
-            self.body = ctx[:errors].to_json 
-            self.status = 422
-          end
         end
       end
     end

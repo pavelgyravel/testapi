@@ -13,16 +13,8 @@ module Api
           }
 
           signal, (ctx, _) = Op::Posts::New.(params: op_params)
-          
-          self.format =  :json
-          if signal.to_h[:semantic] == :success
-            self.body = ctx[:post].to_json   
-          else 
-            self.body = ctx[:errors].to_json 
-            self.status = 422
-          end
-          
-          
+
+          present(signal, ctx, PostStruct)
         end
       end
     end

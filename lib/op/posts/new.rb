@@ -22,7 +22,7 @@ module Op::Posts
 
     def create_post(ctx, params:, **)
       post_params =  params.merge(user_id: ctx[:user].id)
-      ctx[:post] = PostRepository.new.create(post_params)
+      ctx[:model] = PostRepository.new.create(post_params)
     end
   end
 end

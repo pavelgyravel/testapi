@@ -10,21 +10,22 @@ namespace :db do
   desc 'Creates initiad data'
   task :seed, [:domain] do |task, args|
     # 200k Done in 1777.9301319997758seconds
+    puts "Dummy data creating started.."
 
-    domain = args[:domain] || 'http://locahost:2300'
-
+    
     ips_count = 50
     authors_count = 100
     posts_count = 200000
     rates_count = 1000
 
-    puts "Dummy data creating started.."
+
+    domain = args[:domain] || 'http://localhost:2300'
     bar = RakeProgressbar.new( rates_count + posts_count)
     starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     ips = Array.new(ips_count).map{ Faker::Internet.ip_v4_address }
     authors = Array.new(authors_count).map{ "#{Faker::Name.first_name}_#{Faker::Name.last_name}".downcase }
-
     posts_ids = []
+
     uri = URI.parse("#{domain}/api/posts/new")
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/json"
