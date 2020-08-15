@@ -257,7 +257,6 @@ DEPENDENCIES
   capistrano-rvm
   capybara
   dotenv (~> 2.4)
-  dry-struct
   faker
   fast_jsonapi
   hanami (~> 1.3)
