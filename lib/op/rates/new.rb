@@ -5,9 +5,8 @@ module Op::Rates
     step :create_rate
     
     def validate(ctx, params:, **)
-      sch = Validators::RateSchema
-      validation = sch.call(params)
-      ctx[:errors] = validation.errors
+      validation = Validators::RateContract.new.call(params)
+      ctx[:errors] = validation.errors.to_h
       validation.success? 
     end
     

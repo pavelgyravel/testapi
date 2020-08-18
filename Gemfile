@@ -2,12 +2,14 @@ source 'https://rubygems.org'
 
 gem 'rake'
 gem 'hanami',       '~> 1.3'
-gem 'hanami-model', '~> 1.3'
+# gem 'hanami-model', '~> 1.3'
+gem 'activerecord'
+gem 'dry-struct'
+gem 'dry-validation'
 
 gem 'pg'
 
 gem 'trailblazer-operation'
-gem 'fast_jsonapi'
 gem 'faker'
 gem 'dotenv', '~> 2.4'
 

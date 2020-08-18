@@ -1,10 +1,10 @@
 class PostStruct < BaseStruct
-  attribute :id, Types::Int
+  attribute :id, Types::Integer
   attribute :title, Types::String
   attribute :content, Types::String
   attribute :author_ip, Types::String
   attribute :rate, Types::Float
-  attribute :user_id, Types::Int
+  attribute :user_id, Types::Integer
 end
 
 class ErrorStruct < BaseStruct

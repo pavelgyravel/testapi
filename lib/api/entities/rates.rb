@@ -1,2 +1,2 @@
-class Rates < Hanami::Entity
-end
+# class Rates < Hanami::Entity
+# end

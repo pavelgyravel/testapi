@@ -1,2 +1,2 @@
-class User < Hanami::Entity
-end
+# class User < Hanami::Entity
+# end

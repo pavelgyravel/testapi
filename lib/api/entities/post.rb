@@ -1,2 +1,2 @@
-class Post < Hanami::Entity
-end
+# class Post < Hanami::Entity
+# end

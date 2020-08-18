@@ -6,8 +6,8 @@ module Op::Posts
     step :create_post
     
     def validate(ctx, params:, **)
-      validation = Validators::PostSchema.call(params)
-      ctx[:errors] = validation.errors
+      validation = Validators::PostContract.new.call(params)
+      ctx[:errors] = validation.errors.to_h
       validation.success?
     end
     

@@ -4,11 +4,9 @@ module Op::Posts
     step :find_rates
     
     def validate(ctx, params:, **)
-      sch = Dry::Validation.Schema(Validators::BaseSchema) do
-        required(:count).filled(:int?, gt?: 0, lteq?: 1000)
-      end
-      validation = sch.call(params)
-      ctx[:errors] = validation.errors
+      
+      validation = Validators::PostListContract.new.call(params)
+      ctx[:errors] = validation.errors.to_h
       validation.success?
     end
     

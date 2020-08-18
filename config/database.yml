@@ -1,0 +1,25 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  user: pavel
+
+development:
+  <<: *default
+  database: api_development
+
+test:
+  <<: *default
+  database: api_test
+
+# production:
+#   <<: *default
+#   database: db/production.sqlite3
+
+# other_db_development:
+#   <<: *default
+#   database: db/my_other_database_development.sqlite
+
+# other_db_production:
+#   <<: *default
+#   database: db/my_other_database_production.sqlite

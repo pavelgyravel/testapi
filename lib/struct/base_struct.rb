@@ -1,6 +1,9 @@
+require 'dry-types'
+# require 'dry-struct'
+
 class BaseStruct < Dry::Struct
   module Types
-    include Dry::Types.module
+    include Dry.Types()
   end
 
   def self.attribute(name, type = nil, &block)

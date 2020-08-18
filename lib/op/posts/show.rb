@@ -4,11 +4,8 @@ module Op::Posts
     step :model, Output(Trailblazer::Activity::Left, :failure) => End(:invalid)
     
     def validate(ctx, params:, **)
-      sch = Dry::Validation.Schema(Validators::BaseSchema) do
-        required(:id).filled(:int?, gt?: 0)
-      end
-      validation = sch.call(params)
-      ctx[:errors] = validation.errors
+      validation = Validators::PostShowContract.new.call(params)
+      ctx[:errors] = validation.errors.to_h
       validation.success? 
     end
     

@@ -1,9 +1,14 @@
 require 'bundler/setup'
 require 'hanami/setup'
-require 'hanami/model'
+# require 'hanami/model'
+require 'active_record'
 require_relative '../lib/api'
 
 require_relative '../apps/api/application'
+
+db_config = YAML::load(ERB.new(File.read('config/database.yml')).result)[ENV['RACK_ENV']]
+require_relative '../lib/models/application_record'
+ApplicationRecord.establish_connection(db_config)
 
 Hanami.configure do
   mount Api::Application, at: '/api'
