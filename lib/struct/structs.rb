@@ -7,8 +7,11 @@ class PostStruct < BaseStruct
   attribute :user_id, Types::Int
 end
 
-
-
 class ErrorStruct < BaseStruct
   attribute :errors, Types::Array 
+end
+
+class IpAurhorsStruct < BaseStruct
+  attribute :author_ip, Types::String
+  attribute :logins, Types::Array.of(Types::String)
 end

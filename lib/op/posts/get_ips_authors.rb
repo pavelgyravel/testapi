@@ -6,11 +6,13 @@ module Op::Posts
       ips_with_authors = PostRepository.new.get_ips_with_authors
 
       if ips_with_authors
-        ctx[:result] = ips_with_authors.map do |model| 
-          { model[:author_ip] => model[:logins].split(', ')}
+        ctx[:model] = ips_with_authors.map do |model| 
+          { author_ip: model[:author_ip],
+            logins: model[:logins].split(', ')
+          }
         end
       else
-        ctx[:result] = []
+        ctx[:model] = []
       end
     end
   end

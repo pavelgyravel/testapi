@@ -3,13 +3,6 @@ class BaseStruct < Dry::Struct
     include Dry::Types.module
   end
 
-  # def initialize entity
-  #   super
-  #   if entity.instance_of? Array
-
-  #   end
-  # end
-
   def self.attribute(name, type = nil, &block)
     super
     define_attribute_setter(name)
