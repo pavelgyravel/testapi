@@ -12,10 +12,10 @@ test:
   <<: *default
   database: api_test
 
-  development:
-    <<: *default
-    user: postgres
-    database: api_production
+production:
+  <<: *default
+  user: postgres
+  database: api_production
 
 # other_db_development:
 #   <<: *default
