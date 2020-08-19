@@ -24,10 +24,11 @@ group :development do
   gem 'awesome_print'
   gem 'thin'
   gem "capistrano", "~> 3.14", require: false
-  gem "capistrano-hanami", require: false
+  # gem "capistrano-hanami", require: false
   gem "capistrano-rvm", require: false
 	gem "capistrano-bundler"	, require: false
 	gem "capistrano-passenger", require: false
+  gem "capistrano-rails", "~> 1.6", require: false
 	
 end
 

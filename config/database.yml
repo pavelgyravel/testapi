@@ -14,7 +14,7 @@ test:
 
 production:
   <<: *default
-  user: postgres
+  user: pavlo
   database: api_production
 
 # other_db_development:
