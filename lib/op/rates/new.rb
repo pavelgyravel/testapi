@@ -11,13 +11,17 @@ module Op::Rates
     end
     
     def find_post(ctx, params:, **)
-      ctx[:post] = PostRepository.new.find(params[:post_id])
-      ctx[:errors] = {not_found: 'Post not found'} if !ctx[:post]
-      ctx[:post] ? Trailblazer::Activity::Right : Trailblazer::Activity::Left
+      ctx[:model] = Post.find_by_id(params[:post_id])
+      ctx[:errors] = {not_found: 'Post not found'} if !ctx[:model]
+      ctx[:model] ? Trailblazer::Activity::Right : Trailblazer::Activity::Left
     end
 
     def create_rate(ctx, params:, **)
-      ctx[:model] = PostRepository.new.update_rate(ctx[:post].id, params[:rate])
+      ctx[:model].with_lock do
+        created_rate = Rate.create(rate: params[:rate], post: ctx[:model])
+        avg_rate = Rate.where("post_id = :post_id and created_at <= :created_at", {post_id: ctx[:model].id, created_at: created_rate.created_at}).average(:rate)
+        ctx[:model].update_attribute(:rate, avg_rate)
+      end
     end
   end
 end

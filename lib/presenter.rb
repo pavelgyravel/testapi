@@ -2,11 +2,12 @@ module ResponsePresenter
   def present(signal, ctx, presenter_klass)
     if signal.to_h[:semantic] == :success 
       data = if ctx[:model].instance_of?(Array)
-        ctx[:model]
-        # ctx[:model].map{|el| presenter_klass.new(el)} 
+        ctx[:model].map{|el| 
+          obj = el.instance_of?(Hash) ? el : el.attributes.symbolize_keys
+          presenter_klass.new(obj)
+        } 
       else 
-        ctx[:model]
-        # presenter_klass.new(ctx[:model])
+        presenter_klass.new(ctx[:model].attributes.symbolize_keys)
       end
       self.body = {
         data: data

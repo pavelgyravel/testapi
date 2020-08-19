@@ -6,15 +6,16 @@ default: &default
 
 development:
   <<: *default
-  database: api_development
+  database: api_development2
 
 test:
   <<: *default
   database: api_test
 
-# production:
-#   <<: *default
-#   database: db/production.sqlite3
+  development:
+    <<: *default
+    user: postgres
+    database: api_production
 
 # other_db_development:
 #   <<: *default

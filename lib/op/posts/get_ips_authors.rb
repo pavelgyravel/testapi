@@ -3,12 +3,16 @@ module Op::Posts
     step :model
     
     def model(ctx, **)
-      ips_with_authors = PostRepository.new.get_ips_with_authors
+      sql = "select p.author_ip, string_agg(distinct u.login,  ', ') as logins "\
+      "from posts p  left join users u ON u.id = p.user_id group by p.author_ip"
+
+      ips_with_authors = ActiveRecord::Base.connection.execute(sql).to_a
 
       if ips_with_authors
         ctx[:model] = ips_with_authors.map do |model| 
-          { author_ip: model[:author_ip],
-            logins: model[:logins].split(', ')
+          { 
+            author_ip: model['author_ip'],
+            logins: model['logins'].split(', ')
           }
         end
       else

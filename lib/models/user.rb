@@ -1,3 +1,3 @@
-class UserAR < ApplicationRecord
-  self.table_name = 'users'
+class User < ApplicationRecord
+  has_many :posts
 end

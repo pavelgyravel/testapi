@@ -6,20 +6,17 @@ require 'rake'
 require 'rake-progressbar'
 
 
-namespace :db do
-  desc 'Creates initiad data'
-  task :seed1, [:domain] do |task, args|
-    # 200k Done in 1777.9301319997758seconds
-    puts "Dummy data creating started.."
 
+puts "Dummy data creating started.."
     
     ips_count = 50
     authors_count = 100
-    posts_count = 200000
-    rates_count = 1000
+    posts_count = 2000
+    rates_count = 100
+    req_count=0
 
 
-    domain = args[:domain] || 'http://localhost:2300'
+    domain =  'http://localhost:2300'
     bar = RakeProgressbar.new( rates_count + posts_count)
     starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     ips = Array.new(ips_count).map{ Faker::Internet.ip_v4_address }
@@ -41,8 +38,9 @@ namespace :db do
       })
       response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
         response = http.request(request)
-        posts_ids << JSON.parse(response.body).dig('id')
+        posts_ids << JSON.parse(response.body).dig('data','id')
       end
+      req_count+=1
       bar.inc
     end
 
@@ -57,7 +55,7 @@ namespace :db do
 
     posts_to_rate = Array.new(rates_count).map{posts_ids.sample}
     posts_to_rate.each do |post_id|
-      rand(20).times do
+      rand(10).times do
         
         uri = URI.parse("#{domain}/api/rates/new")
         request = Net::HTTP::Post.new(uri)
@@ -73,7 +71,9 @@ namespace :db do
 
         response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
           response = http.request(request)
+          puts response
         end
+        req_count+=1
       end
       bar.inc
     end
@@ -84,14 +84,4 @@ namespace :db do
     puts "Creating rates done in #{rate_endind -rate_starting}seconds"
     puts "="*50
     puts "Total execution tine is #{rate_endind - starting}seconds"
-
-  end
-
-
-  desc 'Test Rake'
-  task :test do
-
-    PostRepository.new
-
-  end
-end
+    puts "Avg rps is #{(rate_endind - starting)/req_count}"

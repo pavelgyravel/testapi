@@ -6,6 +6,18 @@ class BaseStruct < Dry::Struct
     include Dry.Types()
   end
 
+  transform_types do |type|
+    type.constructor do |value|
+      case 
+      when value.instance_of?(IPAddr)
+        value.to_s
+      else
+        value  
+      end
+    end
+  end
+
+
   def self.attribute(name, type = nil, &block)
     super
     define_attribute_setter(name)

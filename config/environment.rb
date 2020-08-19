@@ -13,25 +13,25 @@ ApplicationRecord.establish_connection(db_config)
 Hanami.configure do
   mount Api::Application, at: '/api'
 
-  model do
-    ##
-    # Database adapter
-    #
-    # Available options:
-    #
-    #  * SQL adapter
-    #    adapter :sql, 'sqlite://db/api_development.sqlite3'
-    #    adapter :sql, 'postgresql://localhost/api_development'
-    #    adapter :sql, 'mysql://localhost/api_development'
-    #
-    adapter :sql, ENV.fetch('DATABASE_URL', "postgresql://postgres@localhost/api_#{ENV['HANAMI_ENV']}")
+  # model do
+  #   ##
+  #   # Database adapter
+  #   #
+  #   # Available options:
+  #   #
+  #   #  * SQL adapter
+  #   #    adapter :sql, 'sqlite://db/api_development.sqlite3'
+  #   #    adapter :sql, 'postgresql://localhost/api_development'
+  #   #    adapter :sql, 'mysql://localhost/api_development'
+  #   #
+  #   adapter :sql, ENV.fetch('DATABASE_URL', "postgresql://postgres@localhost/api_#{ENV['HANAMI_ENV']}")
 
-    ##
-    # Migrations
-    #
-    migrations 'db/migrations'
-    schema     'db/schema.sql'
-  end
+  #   ##
+  #   # Migrations
+  #   #
+  #   migrations 'db/migrations'
+  #   schema     'db/schema.sql'
+  # end
 
   # mailer do
   #   root 'lib/api/mailers'

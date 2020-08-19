@@ -7,22 +7,21 @@ module Op::Posts
     
     def validate(ctx, params:, **)
       validation = Validators::PostContract.new.call(params)
-      ctx[:errors] = validation.errors.to_h
-      validation.success?
+      validation.success? ? ctx[:params] = validation.to_h : ctx[:errors] = validation.errors.to_h
     end
     
     def find_user(ctx, params:, **)
-      ctx[:user] = UserRepository.new.find_by_login(params[:login])
+      ctx[:user] = User.find_by_login(params[:login])
       ctx[:user] ? Trailblazer::Activity::Right : Trailblazer::Activity::Left
     end
 
     def create_user(ctx, params:, **)
-      ctx[:user] = UserRepository.new.create(login: params[:login])
+      ctx[:user] = User.create(login: params[:login])
     end
 
     def create_post(ctx, params:, **)
-      post_params =  params.merge(user_id: ctx[:user].id)
-      ctx[:model] = PostRepository.new.create(post_params)
+      post_params =  params.slice(:title, :content, :author_ip).merge(user: ctx[:user])
+      ctx[:model] = Post.create(post_params)
     end
   end
 end

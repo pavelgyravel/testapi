@@ -4,6 +4,8 @@ gem 'rake'
 gem 'hanami',       '~> 1.3'
 # gem 'hanami-model', '~> 1.3'
 gem 'activerecord'
+gem 'active_record_migrations',  require: false
+
 gem 'dry-struct'
 gem 'dry-validation'
 

@@ -11,7 +11,7 @@ module Op::Posts
     end
     
     def find_rates(ctx, params:, **)
-      ctx[:model] = PostRepository.new.get_top(params[:count])
+      ctx[:model] = Post.order(rate: :desc).limit(params[:count]).to_a
     end
 
   end

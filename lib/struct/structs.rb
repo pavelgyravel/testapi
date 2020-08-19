@@ -8,7 +8,7 @@ class PostStruct < BaseStruct
 end
 
 class ErrorStruct < BaseStruct
-  attribute :errors, Types::Array 
+  attribute :errors, Types::Hash
 end
 
 class IpAurhorsStruct < BaseStruct
