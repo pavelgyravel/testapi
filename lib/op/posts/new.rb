@@ -8,6 +8,7 @@ module Op::Posts
     def validate(ctx, params:, **)
       validation = Validators::PostContract.new.call(params)
       validation.success? ? ctx[:params] = validation.to_h : ctx[:errors] = validation.errors.to_h
+      validation.success?
     end
     
     def find_user(ctx, params:, **)
@@ -21,7 +22,8 @@ module Op::Posts
 
     def create_post(ctx, params:, **)
       post_params =  params.slice(:title, :content, :author_ip).merge(user: ctx[:user])
-      ctx[:model] = Post.create(post_params)
+      post = Post.create(post_params)
+      ctx[:model] = Post.joins(:user).select("posts.*, users.login").find_by(id: post.id)
     end
   end
 end
