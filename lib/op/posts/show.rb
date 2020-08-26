@@ -10,7 +10,7 @@ module Op::Posts
     end
     
     def model(ctx, params:, **)
-      ctx[:model] = Post.find(params[:id])
+      ctx[:model] = Post.find_by_id(params[:id])
       ctx[:errors] = {not_found: 'Post not found'} if !ctx[:model] 
       ctx[:model] ? Trailblazer::Activity::Right : Trailblazer::Activity::Left
     end
