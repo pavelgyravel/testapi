@@ -2,20 +2,19 @@ source 'https://rubygems.org'
 
 gem 'rake'
 gem 'hanami',       '~> 1.3'
-# gem 'hanami-model', '~> 1.3'
 gem 'activerecord'
 gem 'active_record_migrations',  require: false
-
 gem 'dry-struct'
 gem 'dry-validation'
-
 gem 'pg'
 
 gem 'trailblazer-operation'
 gem 'faker'
 gem 'dotenv', '~> 2.4'
-
 gem 'rake-progressbar'
+gem 'passenger'
+gem 'httparty'
+
 group :development do
   # Code reloading
   # See: https://guides.hanamirb.org/projects/code-reloading
@@ -29,7 +28,7 @@ group :development do
 	gem "capistrano-bundler"	, require: false
 	gem "capistrano-passenger", require: false
   gem "capistrano-rails", "~> 1.6", require: false
-	
+  
 end
 
 group :test, :development do
@@ -38,7 +37,8 @@ end
 
 group :test do
   gem 'rspec'
-  gem 'capybara'
+  gem 'factory_bot'
+  gem 'database_cleaner-active_record'
 end
 
 group :production do

@@ -11,7 +11,7 @@ module Op::Posts
     end
     
     def find_rates(ctx, params:, **)
-      ctx[:model] = Post.order(rate: :desc).limit(params[:count]).to_a
+      ctx[:model] = Post.joins(:user).select("posts.*, users.login").order(rate: :desc).limit(params[:count]).to_a
     end
 
   end

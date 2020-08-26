@@ -10,12 +10,15 @@ ActiveRecord::Base.establish_connection(db_config)
 require_relative '../apps/api/application'
 
 
+
+
 Hanami.configure do
   mount Api::Application, at: '/api'
 
   environment :development do
     # See: https://guides.hanamirb.org/projects/logging
-    logger level: :info
+    logger level: :debug
+
   end
 
   environment :production do

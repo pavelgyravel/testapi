@@ -1,10 +1,11 @@
 require 'dry-types'
-# require 'dry-struct'
 
 class BaseStruct < Dry::Struct
   module Types
     include Dry.Types()
   end
+
+  transform_keys(&:to_sym)
 
   transform_types do |type|
     type.constructor do |value|
