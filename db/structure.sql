@@ -33,7 +33,7 @@ CREATE TABLE public.posts (
     id bigint NOT NULL,
     title character varying NOT NULL,
     content character varying NOT NULL,
-    author_ip inet NOT NULL,
+    author_ip character varying NOT NULL,
     rate double precision DEFAULT 0.0 NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
@@ -247,6 +247,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200818181235'),
 ('20200818181704'),
 ('20200818181832'),
-('20200818182005');
+('20200818182005'),
+('20200827060959');
 
 

@@ -9,17 +9,18 @@ require 'httparty'
 
 puts "Dummy data creating started.."
     
-threads_count = 20
+threads_count = 1
 
-ips_count = 50
-authors_count = 100
-posts_count = 5000
-rates_count = 500
+ips_count = 20
+authors_count = 40
+posts_count = 1000
+rates_count = 10
 retes_per_post = 5
 req_count = 0
 
 
 domain =  'http://64.225.75.221'
+# domain =  'http://localhost:2300'
 
 bar = RakeProgressbar.new( posts_count + (rates_count * retes_per_post))
 starttime = Process.clock_gettime(Process::CLOCK_MONOTONIC)

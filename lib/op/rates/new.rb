@@ -11,7 +11,7 @@ module Op::Rates
     end
     
     def find_post(ctx, params:, **)
-      ctx[:model] = Post.joins(:user).select("posts.*, users.login").find_by(id: params[:post_id])
+      ctx[:model] = Post.find_by(id: params[:post_id])
       ctx[:errors] = {not_found: 'Post not found'} if !ctx[:model]
       ctx[:model] ? Trailblazer::Activity::Right : Trailblazer::Activity::Left
     end

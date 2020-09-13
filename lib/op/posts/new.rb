@@ -23,7 +23,7 @@ module Op::Posts
     def create_post(ctx, params:, **)
       post_params =  params.slice(:title, :content, :author_ip).merge(user: ctx[:user])
       post = Post.create(post_params)
-      ctx[:model] = Post.joins(:user).select("posts.*, users.login").find_by(id: post.id)
+      ctx[:model] = Post.find_by(id: post.id)
     end
   end
 end

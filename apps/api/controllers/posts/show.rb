@@ -6,7 +6,7 @@ module Api
 
         def call(params)
           signal, (ctx, _) = Op::Posts::Show.(params: {id: params[:id].to_i})
-          present(signal, ctx, PostStruct)
+          params[:v2] ? present_v2(signal, ctx, PostRepresenter) : present(signal, ctx, PostStruct)
         end
       end
     end

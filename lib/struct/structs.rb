@@ -4,7 +4,7 @@ class PostStruct < BaseStruct
   attribute :content, Types::String
   attribute :author_ip, Types::String
   attribute :rate, Types::Float
-  attribute :login, Types::String
+  attribute :user_id, Types::Integer
 end
 
 class ErrorStruct < BaseStruct

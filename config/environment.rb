@@ -18,7 +18,6 @@ Hanami.configure do
   environment :development do
     # See: https://guides.hanamirb.org/projects/logging
     logger level: :debug
-
   end
 
   environment :production do

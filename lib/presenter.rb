@@ -17,4 +17,17 @@ module ResponsePresenter
       self.body = ErrorStruct.new(errors: ctx[:errors]).to_json
     end
   end
+
+  def present_v2(signal, ctx, presenter_klass)
+    if signal.to_h[:semantic] == :success 
+      self.body = if ctx[:model].instance_of?(Array)
+        presenter_klass.for_collection.prepare(ctx[:model]).to_json
+      else 
+        presenter_klass.prepare(ctx[:model]).to_json
+      end
+    else
+      self.status = 422
+      self.body = ErrorRepresenter.prepare(Struct.new(errors: ctx[:errors])).to_json
+    end
+  end
 end
